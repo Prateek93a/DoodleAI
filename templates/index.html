@@ -1,5 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body%}
-
+<div id="head">
+    <h1>MNIST Web App</h1>
+    <div>
+        <button id="save">Predict</button>
+        <button id="clear">Clear</button>
+    </div>
+</div>
+<!--<canvas id="canvas" width="600" height="600"></canvas>-->
+<div>
+    <p id="result"></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+<script src="/static/js/index.js"></script>
 {% endblock %}

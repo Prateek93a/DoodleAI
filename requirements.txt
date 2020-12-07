@@ -1,4 +1,4 @@
 Flask
 numpy
 pickle-mixin
-sklearn
+torch==1.7.0
