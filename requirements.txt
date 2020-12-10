@@ -1,4 +1,3 @@
 Flask
 numpy
-pickle-mixin
 torch==1.7.0
