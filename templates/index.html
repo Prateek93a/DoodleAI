@@ -1,17 +1,62 @@
 {% extends "layout.html" %}
 
 {% block body%}
-<div id="head">
-    <h1>MNIST Web App</h1>
-    <div>
-        <button id="save">Predict</button>
-        <button id="clear">Clear</button>
+
+<div class="row component">
+    <div class="col s5 offset-s1 component text">
+        <h3>👋️Hi, It's DoodleBot here!</h3>
+        <p class="grey-text text-lighten-3">
+            I am an AI based doodle classifier. My inspiration comes from <a
+                href="https://quickdraw.withgoogle.com/#">Quick Draw</a>, another AI based doodle classifier by
+            Google.
+        </p>
+        <p class="grey-text text-lighten-3">
+            So, what you have to do is draw something fun from the <a href="#modal1" class="modal-trigger">available
+                categories</a> on the canvas
+            and I will try to guess what you have drawn. You have more than 100 categories to show your creativity!
+        </p>
+        <p>
+            Since I classify doodles, you don't have to add too much details to the drawing. Here are some <a
+                href="#modal2" class="modal-trigger">examples</a> for your reference if you are
+            unfamiliar with doodles.
+        </p>
+        <p class="grey-text text-lighten-3">
+            You can read about how I was built at <a href="">Github</a> and while you are there, do hit the ⭐️
+            button :).
+        </p>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
     </div>
-</div>
-<!--<canvas id="canvas" width="600" height="600"></canvas>-->
-<div>
-    <p id="result"></p>
+    <div class="col s5 offset-s1 component">
+        <div class="row">
+            <div class="col"><a id="guess-btn" class="btn blue darken-3">Guess Doodle</a></div>
+            <div class="col"><a id="clear-btn" class="btn red darken-3">Clear Canvas</a></div>
+        </div>
+        <div id="canvas">
+
+        </div>
+        <p id="guess-text">
+
+        </p>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
 <script src="/static/js/index.js"></script>
+
 {% endblock %}

@@ -1,22 +1,30 @@
-const saveBtn = document.getElementById("save");
-const clearBtn = document.getElementById("clear");
-const resultp = document.getElementById("result");
+const guessBtn = document.getElementById('guess-btn');
+const clearBtn = document.getElementById('clear-btn');
+const guessText = document.getElementById('guess-text');
+const url = 'http://localhost:5000/predict';
 let isProcessing;
 
-saveBtn.addEventListener('click', (e) => {
+document.addEventListener('DOMContentLoaded', () => {
+    const elems = document.querySelectorAll('.modal');
+    const instances = M.Modal.init(elems, {});
+});
+
+guessBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    saveBtn.innerText = 'Wait';
-    resultp.innerText = '';
+    guessBtn.classList.add('disabled');
+    clearBtn.classList.add('disabled');
+    guessText.innerText = 'I am thinking...';
     isProcessing = true;
-    img = get();
-    img.resize(28, 28);
-    img.loadPixels();
+
+    doodle = get();
+    doodle.resize(28, 28);
+    doodle.loadPixels();
     input = [];
-    for (let i = 0; i < img.pixels.length; i += 4) {
-        input.push(img.pixels[i]);
+    for (let i = 0; i < doodle.pixels.length; i += 4) {
+        input.push(255 - doodle.pixels[i]);
     }
-    let url = 'http://localhost:5000/predict';
-    let postData = { image: input };
+
+    const postData = { image: input };
     fetch(url, {
         method: 'POST',
         headers: {
@@ -27,27 +35,29 @@ saveBtn.addEventListener('click', (e) => {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            saveBtn.innerText = 'Predict';
+            guessBtn.classList.remove('disabled');
+            clearBtn.classList.remove('disabled');
+            guessText.innerText = `I believe it is ${data.label}`;
             isProcessing = false;
-            resultp.innerText = `I believe it is ${data.number}`;
         });
 });
 
 clearBtn.addEventListener('click', (e) => {
-    resultp.innerText = '';
-    background(0);
+    guessText.innerText = '';
+    background(255);
 });
 
 function setup() {
     isProcessing = false;
-    resultp.innerText = '';
-    createCanvas(280, 280);
-    background(0);
+    guessText.innerText = '';
+    cvs = createCanvas(500, 500);
+    cvs.parent('canvas');
+    background(255);
 }
 
 function draw() {
-    strokeWeight(24);
-    stroke(255);
+    strokeWeight(15);
+    stroke(0);
     if (!isProcessing) {
         if (mouseIsPressed) {
             line(pmouseX, pmouseY, mouseX, mouseY);
