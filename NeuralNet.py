@@ -66,9 +66,9 @@ class Net(nn.Module):
             results.append([categories[int(idx)], percent])
 
         return results
-       
+
     def transform(self, x):
-        raw_x = np.array(x, dtype=np.float32)
+        raw_x = np.array(x, dtype=np.float32).reshape(28, 28)
         transformed_x = self.transforms(raw_x).view(1, 1, 28, 28)
         return transformed_x
 
