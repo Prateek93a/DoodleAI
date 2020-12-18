@@ -34,10 +34,13 @@ guessBtn.addEventListener('click', (e) => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            if(data.error){
+	    	guessText.innerText = 'I think there is some internal error.\n Reload the page.'
+	    }
+	    results = data.label.map(([category, percent]) => `${category.split('_').join(' ')}`).join('\n');
             guessBtn.classList.remove('disabled');
             clearBtn.classList.remove('disabled');
-            guessText.innerText = `I believe it is ${data.label}`;
+            guessText.innerText = `I believe it is among\n${results}`;
             isProcessing = false;
         });
 });
@@ -50,13 +53,13 @@ clearBtn.addEventListener('click', (e) => {
 function setup() {
     isProcessing = false;
     guessText.innerText = '';
-    cvs = createCanvas(500, 500);
+    cvs = createCanvas(308, 308);
     cvs.parent('canvas');
     background(255);
 }
 
 function draw() {
-    strokeWeight(15);
+    strokeWeight(6);
     stroke(0);
     if (!isProcessing) {
         if (mouseIsPressed) {

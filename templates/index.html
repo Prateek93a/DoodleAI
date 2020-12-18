@@ -3,7 +3,7 @@
 {% block body%}
 
 <div class="row component">
-    <div class="col s5 offset-s1 component text">
+    <div class="col s12 m5 offset-m1 component text">
         <h3>👋️Hi, It's DoodleBot here!</h3>
         <p class="grey-text text-lighten-3">
             I am an AI based doodle classifier. My inspiration comes from <a
@@ -13,11 +13,11 @@
         <p class="grey-text text-lighten-3">
             So, what you have to do is draw something fun from the <a href="#modal1" class="modal-trigger">available
                 categories</a> on the canvas
-            and I will try to guess what you have drawn. You have more than 100 categories to show your creativity!
+            and I will try to guess what you have drawn. You have over 50 categories to show your creativity!
         </p>
         <p>
             Since I classify doodles, you don't have to add too much details to the drawing. Here are some <a
-                href="#modal2" class="modal-trigger">examples</a> for your reference if you are
+                href="https://quickdraw.withgoogle.com/data">examples</a> for your reference if you are
             unfamiliar with doodles.
         </p>
         <p class="grey-text text-lighten-3">
@@ -26,11 +26,17 @@
         </p>
         <div id="modal1" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4>Categories</h4>
+                <p>
+                    {% for c  in classes %}
+                    <span>
+                        {{c}},
+                    </span>
+                    {% endfor %}
+                </p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Got it</a>
             </div>
         </div>
         <div id="modal2" class="modal">
@@ -43,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="col s5 offset-s1 component">
+    <div class="col m5 s12 offset-m1 component">
         <div class="row">
             <div class="col"><a id="guess-btn" class="btn blue darken-3">Guess Doodle</a></div>
             <div class="col"><a id="clear-btn" class="btn red darken-3">Clear Canvas</a></div>
