@@ -1,7 +1,7 @@
 const guessBtn = document.getElementById('guess-btn');
 const clearBtn = document.getElementById('clear-btn');
 const guessText = document.getElementById('guess-text');
-const url = 'http://localhost:5000/predict';
+const url = 'https://doodleai.herokuapp.com//predict';
 let isProcessing;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,10 +34,10 @@ guessBtn.addEventListener('click', (e) => {
     })
         .then(response => response.json())
         .then(data => {
-            if(data.error){
-	    	guessText.innerText = 'I think there is some internal error.\n Reload the page.'
-	    }
-	    results = data.label.map(([category, percent]) => `${category.split('_').join(' ')}`).join('\n');
+            if (data.error) {
+                guessText.innerText = 'I think there is some internal error.\n Reload the page.'
+            }
+            results = data.label.map(([category, percent]) => `${category.split('_').join(' ')}`).join('\n');
             guessBtn.classList.remove('disabled');
             clearBtn.classList.remove('disabled');
             guessText.innerText = `I believe it is among\n${results}`;
