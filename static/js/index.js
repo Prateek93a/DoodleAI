@@ -36,13 +36,18 @@ guessBtn.addEventListener('click', (e) => {
         .then(data => {
             if (data.error) {
                 guessText.innerText = 'I think there is some internal error.\n Reload the page.'
+                return;
             }
             results = data.label.map(([category, percent]) => `${category.split('_').join(' ')}`).join('\n');
             guessBtn.classList.remove('disabled');
             clearBtn.classList.remove('disabled');
             guessText.innerText = `I believe it is among\n${results}`;
             isProcessing = false;
-        });
+        })
+        .catch((error) => {
+            console.log(error)
+            guessText.innerText = 'I think there is some internal error.\n Reload the page.'
+        })
 });
 
 clearBtn.addEventListener('click', (e) => {
