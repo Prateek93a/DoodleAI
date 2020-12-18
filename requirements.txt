@@ -17,3 +17,4 @@ toml==0.10.2
 torch==1.7.0+cpu
 typing-extensions==3.7.4.3
 Werkzeug==1.0.1
+gunicorn
