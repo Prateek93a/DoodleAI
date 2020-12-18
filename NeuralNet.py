@@ -69,7 +69,7 @@ class Net(nn.Module):
        
     def transform(self, x):
         raw_x = np.array(x, dtype=np.float32)
-        transformed_x = self.transforms(img).view(1, 1, 28, 28)
+        transformed_x = self.transforms(raw_x).view(1, 1, 28, 28)
         return transformed_x
 
 
