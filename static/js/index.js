@@ -64,7 +64,7 @@ function setup() {
 }
 
 function draw() {
-    strokeWeight(6);
+    strokeWeight(8);
     stroke(0);
     if (!isProcessing) {
         if (mouseIsPressed) {

@@ -15,6 +15,7 @@ threadpoolctl==2.1.0
 toml==0.10.2
 -f https://download.pytorch.org/whl/torch_stable.html
 torch==1.7.0+cpu
+torchvision==0.8.1+cpu
 typing-extensions==3.7.4.3
 Werkzeug==1.0.1
 gunicorn
