@@ -12,6 +12,12 @@ categories = sorted(['airplane', 'mailbox', 'fish', 'face', 'bowtie', 'butterfly
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
+
+        self.transforms = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize((0.5),
+                                 (0.5))])
+
         self.conv1 = nn.Conv2d(1, 32, 3, padding=1)
         self.conv2 = nn.Conv2d(32, 32, 3, padding=1)
         self.conv3 = nn.Conv2d(32, 64, 3, padding=1)
