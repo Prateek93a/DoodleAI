@@ -21,11 +21,11 @@ loadModelBtn.addEventListener('click', async (e) => {
 
     loadModelBtn.classList.add('disabled');
     loadModelBtn.innerText = 'Loading Model';
-    await sess.loadModel(baseUrl + "/static/js/onnx_model.onnx");
+    await sess.loadModel(baseUrl + "/onnx_model.onnx");
 
     isModelLoaded = true;
     loadModelBtn.innerText = 'Model Loaded';
-    guessText.innerText = '';
+    guessText.innerText = 'Now you can draw!';
 });
 
 async function predict() {
