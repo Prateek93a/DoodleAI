@@ -20,6 +20,7 @@ I used a deep network of convolutional layers, hence to prevent overfitting I am
 
 ## References and resources
 
+ - https://github.com/googlecreativelab/quickdraw-dataset
  - https://github.com/yining1023/doodleNet
  - https://ml4a.github.io/guides/DoodleClassifier/
  - https://towardsdatascience.com/stochastic-gradient-descent-with-momentum-a84097641a5d
