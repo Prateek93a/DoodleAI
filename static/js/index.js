@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 loadModelBtn.addEventListener('click', async (e) => {
     e.preventDefault();
+    if (isModelLoaded) return;
+
     loadModelBtn.classList.add('disabled');
     loadModelBtn.innerText = 'Loading Model';
     await sess.loadModel(baseUrl + "/static/js/onnx_model.onnx");
+
     isModelLoaded = true;
     loadModelBtn.innerText = 'Model Loaded';
     guessText.innerText = '';
