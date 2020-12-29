@@ -21,7 +21,7 @@ loadModelBtn.addEventListener('click', async (e) => {
 
     loadModelBtn.classList.add('disabled');
     loadModelBtn.innerText = 'Loading Model';
-    await sess.loadModel(baseUrl + "/onnx_model.onnx");
+    await sess.loadModel(baseUrl + "/static/model/onnx_model.onnx");
 
     isModelLoaded = true;
     loadModelBtn.innerText = 'Model Loaded';
