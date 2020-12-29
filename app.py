@@ -1,23 +1,11 @@
 from flask import Flask, request, render_template, jsonify
-from NeuralNet import model, categories
 
 app = Flask(__name__)
+
+categories = sorted(['airplane', 'mailbox', 'fish', 'face', 'bowtie', 'butterfly', 'umbrella', 'syringe', 'star', 'elephant', 'hammer', 'key',  'knife', 'ice_cream', 'hand', 'flower', 'fork', 'wheel', 'wine_glass', 'cloud', 'microphone', 'cat', 'baseball', 'crab', 'crocodile',
+                     'dolphin', 'ant', 'anvil', 'apple', 'axe', 'banana', 'bicycle', 'binoculars', 'bird', 'birthday_cake', 'mushroom', 'octopus', 'screwdriver', 'shark', 'sheep', 'shoe',  'snake',  'snowflake', 'snowman', 'spider', 'camera', 'campfire', 'candle', 'cannon', 'car'])
 
 
 @app.route("/")
 def index():
     return render_template("index.html", classes=categories)
-
-
-@app.route("/predict", methods=["POST"])
-def predict():
-    image_data = request.get_json(force=True)['image']
-    error = False
-    results = []
-    try:
-        results = model.predict(image_data)
-    except Exception as e:
-        print('An error occured while predicting value.', e)
-        error = True
-
-    return jsonify(label=results, error=error)
