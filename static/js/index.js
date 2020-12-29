@@ -1,6 +1,7 @@
 const loadModelBtn = document.getElementById('load-btn');
 const clearBtn = document.getElementById('clear-btn');
 const guessText = document.getElementById('guess-text');
+const baseUrl = 'https://doodleai.herokuapp.com'
 
 const categories = ['airplane', 'mailbox', 'fish', 'face', 'bowtie', 'butterfly', 'umbrella', 'syringe', 'star', 'elephant', 'hammer', 'key', 'knife', 'ice_cream', 'hand', 'flower', 'fork', 'wheel', 'wine_glass', 'cloud', 'microphone', 'cat', 'baseball', 'crab', 'crocodile',
     'dolphin', 'ant', 'anvil', 'apple', 'axe', 'banana', 'bicycle', 'binoculars', 'bird', 'birthday_cake', 'mushroom', 'octopus', 'screwdriver', 'shark', 'sheep', 'shoe', 'snake', 'snowflake', 'snowman', 'spider', 'camera', 'campfire', 'candle', 'cannon', 'car'].sort();
@@ -18,7 +19,7 @@ loadModelBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     loadModelBtn.classList.add('disabled');
     loadModelBtn.innerText = 'Loading Model';
-    await sess.loadModel("./static/js/onnx_model.onnx");
+    await sess.loadModel(baseUrl + "/static/js/onnx_model.onnx");
     isModelLoaded = true;
     loadModelBtn.innerText = 'Model Loaded';
     guessText.innerText = '';
