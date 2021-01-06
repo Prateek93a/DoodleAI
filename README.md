@@ -1,6 +1,8 @@
 # DoodleAI - AI based doodle classifier
 
-Live Demo: https://doodleai.herokuapp.com (Under free tier, Heroku app goes to sleep after 30 min of inactivity, hence the website might be slow to load initially)
+Live Demo: https://doodleai.herokuapp.com
+
+Under free tier, Heroku app goes to sleep after 30 min of inactivity, hence the website might be slow to load initially. Also make sure your graphic drivers are up to date and your browsers are enabled to use hardware acceleration. While testing, I found that the model does not work on phones, and when browsers are not allowed to use hardware acceleration. So that is something to work upon.
 
 ## Description
 
