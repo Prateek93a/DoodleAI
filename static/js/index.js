@@ -1,6 +1,7 @@
 const loadModelBtn = document.getElementById('load-btn');
 const clearBtn = document.getElementById('clear-btn');
 const guessText = document.getElementById('guess-text');
+const supportModal = document.getElementById('modal2');
 const baseUrl = 'https://doodleai.herokuapp.com'
 
 const categories = ['airplane', 'mailbox', 'fish', 'face', 'bowtie', 'butterfly', 'umbrella', 'syringe', 'star', 'elephant', 'hammer', 'key', 'knife', 'ice_cream', 'hand', 'flower', 'fork', 'wheel', 'wine_glass', 'cloud', 'microphone', 'cat', 'baseball', 'crab', 'crocodile',
@@ -17,6 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 loadModelBtn.addEventListener('click', async (e) => {
     e.preventDefault();
+
+    if (!isWebGLEnabled()) {
+        console.log('Not enabled!');
+        M.Modal.getInstance(supportModal).open();
+        return;
+    }
+
     if (isModelLoaded) return;
 
     loadModelBtn.classList.add('disabled');
@@ -61,7 +69,6 @@ function setup() {
     cvs.parent('canvas');
     background(255);
 }
-
 function draw() {
     strokeWeight(8);
     stroke(0);
@@ -78,4 +85,19 @@ function draw() {
 
 function isMouseOnCanvas() {
     return mouseX >= 0 && mouseX <= 308 && mouseY >= 0 && mouseY <= 308;
+}
+
+function isWebGLEnabled() {
+    const canvas = document.createElement('canvas');
+    const attributes = {
+        alpha: false,
+        antialias: false,
+        premultipliedAlpha: false,
+        preserveDrawingBuffer: false,
+        depth: false,
+        stencil: false,
+        failIfMajorPerformanceCaveat: true
+    };
+    return null != (canvas.getContext('webgl', attributes) ||
+        canvas.getContext('experimental-webgl', attributes));
 }
