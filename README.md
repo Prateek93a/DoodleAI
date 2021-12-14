@@ -2,7 +2,7 @@
 
 **Live App:** https://doodleai.herokuapp.com
 
-**Note:** Under free tier, Heroku app goes to sleep after 30 min of inactivity, hence the website might be slow to load initially. Also make sure your graphic drivers are up to date and your browsers are enabled to use hardware acceleration. While testing, I found that the model does not work well on mobile browsers and the ones on desktop whose hardware acceleration feature was disabled.
+**Note:** Under free tier, Heroku app goes to sleep after 30 min of inactivity, hence the website might be slow to load initially. **Also make sure your graphic drivers are up to date and your browsers are enabled to use hardware acceleration. While testing, I found that the model does not work well on mobile browsers and the ones on desktop whose hardware acceleration feature was disabled.**
 
 ## Demo
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/44807945/104150519-14c32a80-5400-11eb-99f9-949163feda34.gif)
